@@ -1,3 +1,11 @@
+# Chemeketa-GitDoc
+
+Temporary fork of below. Working around issue #90 in the original repo. (Fails to load in Codespaces even when enabled in settings.)
+
+Also changes some default settings to match desired behavior for local use.
+
+Will be discontinued when upstream is fixed.
+
 # GitDoc 📄
 
 GitDoc is a Visual Studio Code extension that allows you to automatically commit/push/pull changes on save. This gives you the simplicity of a Google/Word Doc (creating "snapshots" by saving, not by running `git commit`), but with the richness of git history, and the ability to easily [share](https://github.com) your work. You can enable these auto-commits during specific periods (e.g. when you're working on a feature branch and want to track the evolution of a change), permanently on [specific branches](#auto-commiting-specific-branches) (e.g. you have a `docs` repo that you want to version like a document), or only for [specific files](#auto-commiting-specific-files) (e.g. auto-commmit `*.md` files, but nothing else). This allows you to easily switch between "versioning modalities", in order to support the diverse set of use cases that can benefit from being stored in a git repo (e.g. team projects, your personal blog, school work, etc.)
