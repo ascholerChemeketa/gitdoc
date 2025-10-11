@@ -1,16 +1,16 @@
 {
-  "name": "gitdoc",
-  "displayName": "GitDoc",
-  "publisher": "vsls-contrib",
+  "name": "chemeketa-gitdoc",
+  "displayName": "Chemeketa-GitDoc",
+  "publisher": "ascholer",
   "icon": "images/icon.png",
-  "description": "A continuous, frictionless, background-saving experience that intelligently commits your changes.",
-  "version": "0.2.4",
+  "description": "Fork of GitDoc.",
+  "version": "0.2.5",
   "extensionKind": [
     "workspace"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/lostintangent/gitdoc.git"
+    "url": "https://github.com/ascholerChemeketa/gitdoc.git"
   },
   "engines": {
     "vscode": "^1.90.0"
