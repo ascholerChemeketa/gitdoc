@@ -7,7 +7,13 @@ import { store } from "./store";
 import { commit, watchForChanges, ensureStatusBarItem, updateStatusBarItem } from "./watcher";
 import { updateContext } from "./utils";
 
+
+let outputChannel: vscode.OutputChannel;
+
 export async function activate(context: vscode.ExtensionContext) {
+  outputChannel = vscode.window.createOutputChannel("Chemeketa-GitDoc");
+  context.subscriptions.push(outputChannel);
+
   // Wait for Git extension to be ready
   const git = await getGitApi();
   if (!git) {
@@ -26,6 +32,8 @@ export async function activate(context: vscode.ExtensionContext) {
   }
 
   // Initialize the store based on the configuration
+  outputChannel.appendLine("Chemeketa-GitDoc config status:");
+  outputChannel.appendLine(JSON.stringify({config}, null, 2));
   store.enabled = config.enabled;
 
   // Create status bar item and ensure it's properly initialized

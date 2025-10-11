@@ -1,6 +1,6 @@
 import * as vscode from "vscode";
 
-const DEFAULT_DELAY_MS = 30000;
+const DEFAULT_DELAY_MS = 10000;
 const ENABLED_KEY = "enabled";
 
 export type AutoPull = AutoPush | "onPush";
@@ -17,13 +17,13 @@ export default {
     return config().get("autoCommitDelay", DEFAULT_DELAY_MS);
   },
   get autoPull(): AutoPull {
-    return config().get("autoPull", "onPush");
+    return config().get("autoPull", "off");
   },
   get autoPullDelay(): number {
     return config().get("autoPullDelay", DEFAULT_DELAY_MS);
   },
   get autoPush(): AutoPush {
-    return config().get("autoPush", "onCommit");
+    return config().get("autoPush", "off");
   },
   get autoPushDelay(): number {
     return config().get("autoPushDelay", DEFAULT_DELAY_MS);
@@ -32,16 +32,16 @@ export default {
     return config().get("alwaysShowStatusBarIcon", false);
   },
   get commitMessageFormat(): string {
-    return config().get("commitMessageFormat", "lll");
+    return config().get("commitMessageFormat", "ff");
   },
   get commitValidationLevel(): CommitValidationLevel {
-    return config().get("commitValidationLevel", "error");
+    return config().get("commitValidationLevel", "none");
   },
   get commitOnClose() {
     return config().get("commitOnClose", true);
   },
   get enabled() {
-    return config().get(ENABLED_KEY, false);
+    return config().get(ENABLED_KEY, true);
   },
   set enabled(value: boolean) {
     config().update(ENABLED_KEY, value, vscode.ConfigurationTarget.Workspace);
@@ -56,7 +56,7 @@ export default {
     return config().get("noVerify", false);
   },
   get pullOnOpen() {
-    return config().get("pullOnOpen", true);
+    return config().get("pullOnOpen", false);
   },
   get pushMode(): PushMode {
     return config().get("pushMode", "forcePush");
