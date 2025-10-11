@@ -68,7 +68,7 @@
       "properties": {
         "gitdoc.autoCommitDelay": {
           "type": "number",
-          "default": 30000,
+          "default": 10000,
           "markdownDescription": "Controls the delay in ms after which any changes are automatically committed. Only applies when `GitDoc: Enabled` is set to `true`."
         },
         "gitdoc.autoPull": {
@@ -79,12 +79,12 @@
             "onPush",
             "off"
           ],
-          "default": "onPush",
+          "default": "off",
           "description": "Specifies whether to automatically pull changes from the current remote."
         },
         "gitdoc.autoPullDelay": {
           "type": "number",
-          "default": 30000,
+          "default": 10000,
           "markdownDescription": "Controls the delay in ms after which any commits are automatically pulled. Only applies when `GitDoc: Auto Pull` is set to `afterDelay`."
         },
         "gitdoc.autoPush": {
@@ -94,7 +94,7 @@
             "onCommit",
             "off"
           ],
-          "default": "onCommit",
+          "default": "off",
           "description": "Specifies whether to automatically push your changes to the current remote."
         },
         "gitdoc.autoPushDelay": {
@@ -109,7 +109,7 @@
         },
         "gitdoc.commitMessageFormat": {
           "type": "string",
-          "default": "lll",
+          "default": "ff",
           "markdownDescription": "Specifies the format to use for auto-generated commit messages. This setting only applies when `GitDoc > AI: Enabled` is set to `false`. By default, it uses the [Luxon date format](https://moment.github.io/luxon/#/formatting)."
         },
         "gitdoc.commitValidationLevel": {
@@ -119,7 +119,7 @@
             "warning",
             "none"
           ],
-          "default": "error",
+          "default": "none",
           "description": "Specifies whether to validate that a file is free of problems, before attempting to commit changes to it."
         },
         "gitdoc.commitOnClose": {
@@ -144,7 +144,7 @@
         },
         "gitdoc.pullOnOpen": {
           "type": "boolean",
-          "default": true,
+          "default": false,
           "description": "Specifies whether to automatically pull remote changes when you open a repo."
         },
         "gitdoc.pushMode": {
@@ -159,7 +159,7 @@
         },
         "gitdoc.timeZone": {
           "type": "string",
-          "default": null,
+          "default": "America/Los_Angeles",
           "markdownDescription": "Specifies the timezone (as a [tz database name](https://en.wikipedia.org/wiki/List_of_tz_database_time_zones)) that commit message dates should be offset to. Defaults to UTC."
         },
         "gitdoc.excludeBranches": {
