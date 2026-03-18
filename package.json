@@ -1,10 +1,10 @@
 {
   "name": "chemeketa-gitdoc",
-  "displayName": "Chemeketa-Worklog",
+  "displayName": "Chemeketa Worklog (GitDoc Fork)",
   "publisher": "ascholer",
   "icon": "images/icon.png",
   "description": "Automatic git commits.",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "extensionKind": [
     "workspace"
   ],
