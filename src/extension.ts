@@ -8,7 +8,7 @@ import { commit, watchForChanges, ensureStatusBarItem, updateStatusBarItem } fro
 import { updateContext } from "./utils";
 
 
-let outputChannel: vscode.OutputChannel;
+export let outputChannel: vscode.OutputChannel;
 
 export async function activate(context: vscode.ExtensionContext) {
   outputChannel = vscode.window.createOutputChannel("Chemeketa-GitDoc");

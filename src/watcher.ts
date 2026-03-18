@@ -1,5 +1,6 @@
 import * as vscode from "vscode";
 import config from "./config";
+import { outputChannel } from "./extension";
 import { ForcePushMode, GitAPI, Repository, RefType } from "./git";
 import { DateTime } from "luxon";
 import { store } from "./store";
@@ -199,27 +200,36 @@ export async function commit(repository: Repository, message?: string) {
   }
 }
 
-// TODO: Clear the timeout when GitDoc is disabled.
-function debounce(fn: Function, delay: number) {
-  let timeout: NodeJS.Timeout | null = null;
+function throttleWithCooldown(fn: Function, delay: number) {
+  let isCoolingDown = false;
 
   return (...args: any[]) => {
-    if (timeout) {
-      clearTimeout(timeout);
+    if (isCoolingDown) {
+      outputChannel.appendLine(`Commit skipped during cooldown window`);
+      return;
     }
 
-    timeout = setTimeout(() => {
-      fn(...args);
+    isCoolingDown = true;
+    outputChannel.appendLine(`Commit triggered immediately at ${DateTime.now().toISO()}`);
+    fn(...args);
+
+    setTimeout(() => {
+      isCoolingDown = false;
+      outputChannel.appendLine(`Commit cooldown ended at ${DateTime.now().toISO()}`);
     }, delay);
   };
 }
 
 const commitMap = new Map();
 function debouncedCommit(repository: Repository) {
+  outputChannel.appendLine(`Creating throttled commit function for repository`);
   if (!commitMap.has(repository)) {
     commitMap.set(
       repository,
-      debounce(() => commit(repository), config.autoCommitDelay)
+      throttleWithCooldown(() => {
+        outputChannel.appendLine(`Executing immediate commit for repository`);
+        commit(repository);
+      }, config.autoCommitDelay)
     );
   }
 
